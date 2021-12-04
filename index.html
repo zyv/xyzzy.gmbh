@@ -95,18 +95,30 @@
     const protectEmail = email => email.replace(/@/g, ' @ ').replace(/\./, ' ');
 
     const Company = {
-      address: `
-    Xyzzy GmbH
+      name: 'Xyzzy GmbH',
+      get address() {
+        return `
+    ${this.name}
     Lise-Meitner-Str. 5
     D-52428 Jülich
-    `,
+    `;
+      },
       phone: '+49 170 2053836',
-      email: 'office@xyzzy.gmbh',
-      website: 'https://xyzzy.gmbh',
+      domain: 'xyzzy.gmbh',
+      get email() {
+        return `office@${this.domain}`;
+      },
+      get website() {
+        return `https://${this.domain}`;
+      },
       owner: 'Dr. Yury V. Zaytsev',
       registration: 'Amtsgericht Köln unter der Nummer HR B i.G.',
       vatin: 'i.G.'
     };
+
+    if (window.location.domain === `www.${Company.domain}`) {
+      window.location.replace(`https://${Company.domain}`);
+    }
 
     const Content = {
       TEXT_WELCOME: 'Welcome to adventure!!',
@@ -127,7 +139,7 @@
     Around you is a forest.  A small stream flows out of the building and
     down a gully.`,
       TEXT_XYZZY: `
-    Xyzzy GmbH was founded in 2021 by ${Company.owner} as a private
+    ${Company.name} was founded in 2021 by ${Company.owner} as a private
     investment vehicle.  Contact <a href='mailto:${Company.email}'>${protectEmail(Company.email)}</a> for any inquiries.`,
       TEXT_IMPRINT: `
     Angaben gemäß §&nbsp;5 TMG
@@ -154,7 +166,7 @@
       TEXT_PRIVACY: `
     Datenschutzerklärung
 
-    Der Schutz Ihrer persönlichen Daten bei Xyzzy GmbH wird sogar ernster
+    Der Schutz Ihrer persönlichen Daten bei ${Company.name} wird sogar ernster
     als vom Gesetzgeber selbst genommen, indem auf unserer Website gar keine
     personenbezogenen Daten verarbeitet werden.  Die verantwortliche Stelle
     für die Datenverarbeitung entnehmen Sie aus unserem Impressum.
