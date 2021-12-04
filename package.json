@@ -1,0 +1,21 @@
+{
+  "name": "xyzzy",
+  "version": "1.0.0",
+  "description": "Private investment vehicle website",
+  "homepage": "https://xyzzy.gmbh",
+  "repository": "github:zyv/xyzzy.gmbh",
+  "scripts": {
+    "prettier": "prettier --write \"./**/*.{js,json,html,md}\" && prettier --write --parser json \"./.prettierrc\"",
+    "prettier-check": "prettier --check \"./**/*.{js,json,html,md}\" && prettier --write --parser json \"./.prettierrc\"",
+    "lint": "eslint \"**/*.{js,html}\""
+  },
+  "author": "Dr. Yury V. Zaytsev",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^8.4.0",
+    "prettier": "^2.5.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-html": "^6.2.0"
+  }
+}
