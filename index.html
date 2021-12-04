@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Xyzzy GmbH</title>
+
+    <meta name="description" content="Private investment vehicle presentation" />
+    <meta name="author" content="Dr. Yury V. Zaytsev" />
+
+    <meta property="og:title" content="Xyzzy GmbH" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xyzzy.gmbh" />
+    <meta property="og:description" content="Private investment vehicle presentation" />
+    <meta property="og:image" content="assets/favicon-196.png" />
+
+    <link rel="icon" href="assets/favicon.ico" /><!-- IE9- / 32x32 -->
+    <link rel="apple-touch-icon-precomposed" href="assets/favicon-apple-touch-icon-precomposed.png" /><!-- 180x180 -->
+    <link rel="icon" href="assets/favicon-196.png" /><!-- 196x196 -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+
+  <style>
+    html {
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding-left: 1em;
+      padding-bottom: 1em;
+      max-width: calc(80ch + 1em);
+      word-break: break-all;
+      font-family: 'Lucida Console', Monaco, monospace;
+    }
+
+    #history .answer,
+    noscript {
+      text-transform: uppercase;
+      word-break: keep-all;
+      white-space: pre;
+    }
+
+    #history .query::before {
+      content: '>';
+    }
+
+    #history div {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    #prompt {
+      display: inline;
+    }
+
+    #input {
+      display: inline;
+      outline: none;
+    }
+
+    @media (prefers-color-scheme: light) {
+      body,
+      a {
+        background-color: white;
+        color: black;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body,
+      a {
+        background-color: black;
+        color: white;
+      }
+    }
+  </style>
+
+  <body>
+    <div id="history">
+      <div>.r advent</div>
+    </div>
+
+    <noscript>This adventure requires JavaScript! Please turn it on in your browser settings and reload the page.</noscript>
+
+    <span id="prompt">&gt;</span><span id="input" contenteditable="true" autocapitalize="off" spellcheck="false"></span>
+  </body>
+
+  <script>
+    const protectEmail = email => email.replace(/@/g, ' @ ').replace(/\./, ' ');
+
+    const Company = {
+      address: `
+    Xyzzy GmbH
+    Lise-Meitner-Str. 5
+    D-52428 Jülich
+    `,
+      phone: '+49 170 2053836',
+      email: 'office@xyzzy.gmbh',
+      website: 'https://xyzzy.gmbh',
+      owner: 'Dr. Yury V. Zaytsev',
+      registration: 'Amtsgericht Köln unter der Nummer HR B i.G.',
+      vatin: 'i.G.'
+    };
+
+    const Content = {
+      TEXT_WELCOME: 'Welcome to adventure!!',
+      TEXT_INTRO: `
+    Somewhere nearby is colossal cave, where others have found fortunes in
+    treasure and gold, though it is rumored that some who enter are never
+    Seen again.  Magic is said to work in the cave.  I will be your eyes
+    and hands.  Direct me with commands of 1 or 2 words. (Should you get
+    stuck, type "help" for some general hints.  For information on how to
+    end your adventure, etc., type "info".)
+                                 - - -
+    This program was originally developed by Willie Crowther.  Most of the
+    features of the current program were added by Don Woods (DON @ SU-AI).
+    It is now maintained by ${Company.owner} (${protectEmail(Company.email)}).
+    Contact him if you have any questions, comments, etc.`,
+      TEXT_BEGINNING: `
+    You are standing at the end of a road before a small brick building.
+    Around you is a forest.  A small stream flows out of the building and
+    down a gully.`,
+      TEXT_XYZZY: `
+    Xyzzy GmbH was founded in 2021 by ${Company.owner} as a private
+    investment vehicle.  Contact <a href='mailto:${Company.email}'>${protectEmail(Company.email)}</a> for any inquiries.`,
+      TEXT_IMPRINT: `
+    Angaben gemäß §&nbsp;5 TMG
+
+    Betreiber der Webseite
+
+    ${Company.address.trim()}
+
+    Telefon: ${Company.phone}
+    E-Mail: <a href='mailto:${Company.email}'>${Company.email}</a>
+    Website: <a href='${Company.website}' rel="noreferrer noopener" target="_blank">${Company.website}</a>
+
+    Vertretungsberechtigt
+
+    ${Company.owner}
+
+    Registergerichtseintrag
+
+    ${Company.registration}
+
+    Umsatzsteuer-Identifikationsnummer
+
+    ${Company.vatin}`,
+      TEXT_PRIVACY: `
+    Datenschutzerklärung
+
+    Der Schutz Ihrer persönlichen Daten bei Xyzzy GmbH wird sogar ernster
+    als vom Gesetzgeber selbst genommen, indem auf unserer Website gar keine
+    personenbezogenen Daten verarbeitet werden.  Die verantwortliche Stelle
+    für die Datenverarbeitung entnehmen Sie aus unserem Impressum.
+
+    Wir verwenden keine Cookies, speichern und werten keine Informationen
+    über Seiten-Aufrufe aus, und erfassen sonst keine weiteren Daten über
+    unsere Besucher.  Der Datenaustausch mit unserem Server ist mittels
+    TLS verschlüsselt, was die übertragenen Daten für Dritte nicht
+    mitlesbar macht.
+
+    Diese Website wird auf Servern von Github Inc., 88 Colin P Kelly Jr St,
+    San Francisco, CA 94107, USA gehostet. Beachten Sie daher auch die
+    <a href='https://docs.github.com/en/github/site-policy/github-privacy-statement' rel="noreferrer noopener" target="_blank">GitHub Privacy Policy</a>.`,
+      TEXT_HELP: `
+    If you want to end your adventure early, say "quit".  To print some
+    German legalese, say "imprint".  Finally, to waste even more paper, you
+    may specify "privacy" to view our privacy policy as required by the
+    European GDPR law.`,
+      QUESTION_INSTRUCTIONS: 'Would you like instructions?',
+      QUESTION_QUIT: 'Do you really want to quit now?',
+      ANSWER_DONT_UNDERSTAND: "I don't understand that!",
+      ANSWER_WHAT: 'What?',
+      SAY_PLEASE_ANSWER: 'Please answer the question.',
+      SAY_NOTHING: 'Nothing happens.',
+      SAY_OK: 'Ok'
+    };
+
+    const Ranks = [
+      'You are obviously a rank amateur.  Better luck next time.',
+      'Your score qualifies you as a novice class adventurer.',
+      'You have reached "Junior Master" status.',
+      'All of adventuredom gives tribute to you, Adventurer Grandmaster!'
+    ];
+
+    const ClassNames = {
+      QUERY: 'query',
+      ANSWER: 'answer'
+    };
+
+    const State = {
+      WELCOME: 1,
+      PLAY: 2,
+      QUIT: 3
+    };
+
+    class Game {
+      MAX_SCORE = 3.5;
+
+      state = State.WELCOME;
+      question = Content.QUESTION_INSTRUCTIONS;
+      turns = 0;
+      actions = {};
+
+      static unknownCommand() {
+        const answers = [Content.ANSWER_DONT_UNDERSTAND, Content.ANSWER_WHAT];
+        return answers[Math.floor(Math.random() * answers.length)];
+      }
+
+      stayOnTopic() {
+        return `${Content.SAY_PLEASE_ANSWER}  ${this.question}`;
+      }
+
+      reactToXyzzy() {
+        switch (this.state) {
+          case State.WELCOME:
+            this.actions['xyzzy_welcome'] = 0.5;
+            return Content.SAY_NOTHING;
+          default:
+            this.actions['xyzzy_play'] = 1;
+            return Content.TEXT_XYZZY;
+        }
+      }
+
+      reactToAnswer(answer) {
+        switch (answer) {
+          case 'y':
+          case 'ye':
+          case 'yes':
+            this.question = '';
+            if (this.state === State.WELCOME) {
+              this.state = State.PLAY;
+              return `${Content.TEXT_INTRO}\n${Content.TEXT_BEGINNING}`;
+            } /* if (this.state === State.QUIT) */ else {
+              inputElement.contentEditable = 'false';
+              promptElement.textContent = '.';
+              const score = Object.values(this.actions).reduce((total, value) => total + value, 0);
+              const scoreRelative = score / this.MAX_SCORE;
+              const currentRankIndex = scoreRelative === 0 ? 0 : Math.ceil(scoreRelative * Ranks.length) - 1;
+              const missingPoints = ((currentRankIndex + 1) / Ranks.length - scoreRelative) * this.MAX_SCORE;
+              const x100 = number => number * 100;
+              return (
+                `${Content.SAY_OK}\n\n` +
+                `You scored ${x100(score)} out of a possible ${x100(this.MAX_SCORE)}, using ${this.turns} turns.\n` +
+                `${Ranks[currentRankIndex]}\n` +
+                (currentRankIndex !== Ranks.length - 1
+                  ? `To achieve the next higher rating, you need ${Math.ceil(x100(missingPoints))} more points.`
+                  : '')
+              );
+            }
+          case 'n':
+          case 'no':
+            this.question = '';
+            if (this.state === State.WELCOME) {
+              this.state = State.PLAY;
+              return Content.TEXT_BEGINNING;
+            } /* if (this.state === State.QUIT) */ else {
+              return Content.SAY_OK;
+            }
+          default:
+            return this.stayOnTopic();
+        }
+      }
+
+      reactToQuery(query) {
+        switch (query) {
+          case 'help':
+          case 'info':
+            this.actions['help'] = 0.5;
+            return Content.TEXT_HELP;
+          case 'imprint':
+            this.actions['imprint'] = 0.5;
+            return Content.TEXT_IMPRINT;
+          case 'privacy':
+            this.actions['privacy'] = 1;
+            return Content.TEXT_PRIVACY;
+          case 'quit':
+            this.state = State.QUIT;
+            this.question = Content.QUESTION_QUIT;
+            return this.question;
+          default:
+            return Game.unknownCommand();
+        }
+      }
+
+      getReaction(command) {
+        if (command === 'xyzzy') {
+          return this.reactToXyzzy();
+        }
+
+        if (this.question !== '') {
+          return this.reactToAnswer(command);
+        } else {
+          return this.reactToQuery(command);
+        }
+      }
+
+      interpret(command) {
+        this.turns++;
+
+        return this.getReaction(command)
+          .split('\n')
+          .map(e => (e.trim().startsWith('-') ? e : e.trim()))
+          .join('\n')
+          .trim();
+      }
+    }
+
+    const historyElement = document.getElementById('history');
+    const promptElement = document.getElementById('prompt');
+    const inputElement = document.getElementById('input');
+
+    const game = new Game();
+
+    const handleCommand = rawCommand => {
+      const command = rawCommand.trim().toLowerCase();
+
+      const query = document.createElement('div');
+      query.className = ClassNames.QUERY;
+      query.textContent = command;
+
+      const answer = document.createElement('div');
+      answer.className = ClassNames.ANSWER;
+      answer.innerHTML = game.interpret(command);
+
+      historyElement.appendChild(query);
+      historyElement.appendChild(answer);
+    };
+
+    const focusInput = () => {
+      inputElement.focus();
+
+      const range = document.createRange();
+      const selection = window.getSelection();
+      const { childNodes } = inputElement;
+      const lastChildNode = childNodes && childNodes.length - 1;
+
+      range.selectNodeContents(lastChildNode === -1 ? inputElement : childNodes[lastChildNode]);
+      range.collapse(false);
+
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      window.scrollTo(0, document.body.scrollHeight);
+    };
+
+    inputElement.addEventListener('input', () => {
+      if (inputElement.childElementCount < 1) return;
+
+      const lines = inputElement.innerText.replace(/\n$/, '').split('\n');
+      inputElement.textContent = lines.pop();
+      lines.forEach(line => handleCommand(line));
+      focusInput();
+    });
+
+    inputElement.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const command = inputElement.textContent;
+        if (command !== '') {
+          handleCommand(command);
+          inputElement.textContent = '';
+          focusInput();
+        }
+      }
+    });
+
+    inputElement.addEventListener('blur', () => setTimeout(() => focusInput(), 10));
+
+    const answer = document.createElement('div');
+    answer.className = ClassNames.ANSWER;
+    answer.textContent = `${Content.TEXT_WELCOME}  ${Content.QUESTION_INSTRUCTIONS}`;
+    historyElement.appendChild(answer);
+
+    focusInput();
+  </script>
+</html>
