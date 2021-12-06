@@ -214,12 +214,14 @@
     };
 
     class Game {
-      MAX_SCORE = 3.5;
+      constructor() {
+        this.state = State.WELCOME;
+        this.question = Content.QUESTION_INSTRUCTIONS;
+        this.turns = 0;
+        this.actions = {};
 
-      state = State.WELCOME;
-      question = Content.QUESTION_INSTRUCTIONS;
-      turns = 0;
-      actions = {};
+        this.MAX_SCORE = 3.5;
+      }
 
       static unknownCommand() {
         const answers = [Content.ANSWER_DONT_UNDERSTAND, Content.ANSWER_WHAT];

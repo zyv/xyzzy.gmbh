@@ -5,8 +5,5 @@
   },
   "extends": "eslint:recommended",
   "plugins": ["html"],
-  "rules": {},
-  "parserOptions": {
-    "ecmaVersion": "latest"
-  }
+  "rules": {}
 }
