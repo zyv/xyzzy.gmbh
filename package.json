@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "eslint": "8.31.0",
-    "prettier": "2.8.1"
+    "prettier": "2.8.2"
   },
   "devDependencies": {
     "eslint-plugin-html": "7.1.0"
