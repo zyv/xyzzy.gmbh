@@ -3,5 +3,11 @@
   "extends": ["config:js-app"],
   "branchPrefix": "feature/renovate/",
   "reviewers": ["zyv"],
+  "packageRules": [
+    {
+      "groupName": "all",
+      "matchPackagePatterns": ["*"]
+    }
+  ],
   "schedule": ["every 1 hour on sunday"]
 }
