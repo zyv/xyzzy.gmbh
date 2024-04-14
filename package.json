@@ -16,6 +16,6 @@
     "prettier": "3.2.5"
   },
   "devDependencies": {
-    "eslint-plugin-html": "8.0.0"
+    "eslint-plugin-html": "8.1.0"
   }
 }
