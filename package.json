@@ -11,8 +11,10 @@
   },
   "author": "Dr. Yury V. Zaytsev",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "eslint": "9.1.1",
+    "globals": "^15.0.0",
     "prettier": "3.2.5"
   },
   "devDependencies": {
