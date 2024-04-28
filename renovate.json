@@ -9,5 +9,5 @@
       "matchPackagePatterns": ["*"]
     }
   ],
-  "schedule": ["every 1 hour on sunday"]
+  "schedule": ["every 2nd week on sunday after 9pm"]
 }
