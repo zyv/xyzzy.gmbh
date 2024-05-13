@@ -13,8 +13,8 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "eslint": "9.1.1",
-    "globals": "15.1.0",
+    "eslint": "9.2.0",
+    "globals": "15.2.0",
     "prettier": "3.2.5"
   },
   "devDependencies": {
