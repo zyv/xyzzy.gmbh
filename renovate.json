@@ -1,13 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:js-app"],
-  "branchPrefix": "feature/renovate/",
-  "reviewers": ["zyv"],
-  "packageRules": [
-    {
-      "groupName": "all",
-      "matchPackagePatterns": ["*"]
-    }
-  ],
-  "schedule": ["every 2nd week on sunday after 9pm"]
+  "extends": ["config:js-app", "group:all", "schedule:monthly", ":maintainLockFilesMonthly"],
+  "branchPrefix": "feature/renovate/"
 }
