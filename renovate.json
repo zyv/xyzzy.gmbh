@@ -1,5 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:js-app", "group:all", "schedule:monthly", ":maintainLockFilesMonthly"],
+  "extends": ["config:js-app", "group:all", "schedule:quarterly"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": ["schedule:quarterly"]
+  },
   "branchPrefix": "feature/renovate/"
 }
