@@ -1,9 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:js-app", "group:all", "schedule:quarterly"],
+  "extends": ["config:js-app", "group:all"],
   "lockFileMaintenance": {
     "enabled": true,
-    "extends": ["schedule:quarterly"]
+    "schedule": ["* 5 1 */3 *"]
   },
+  "schedule": ["* 5 1 */3 *"],
   "branchPrefix": "feature/renovate/"
 }
