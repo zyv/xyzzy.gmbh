@@ -5,8 +5,8 @@
   "homepage": "https://xyzzy.gmbh",
   "repository": "github:zyv/xyzzy.gmbh",
   "scripts": {
-    "prettier": "prettier --write \"./**/*.{js,json,html,md}\" && prettier --write --parser json \"./.prettierrc\"",
-    "prettier-check": "prettier --check \"./**/*.{js,json,html,md}\" && prettier --check --parser json \"./.prettierrc\"",
+    "format:fix": "prettier --write \"./**/*.{js,json,html,md}\" && prettier --write --parser json \"./.prettierrc\"",
+    "format": "prettier --check \"./**/*.{js,json,html,md}\" && prettier --check --parser json \"./.prettierrc\"",
     "lint": "eslint \"**/*.{js,html}\""
   },
   "author": "Dr. Yury V. Zaytsev",
